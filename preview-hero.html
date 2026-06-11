@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sustainability Cell Hero Preview</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html, body { margin: 0; min-height: 100%; background: #071A17; }
+    @keyframes logoTraceDraw { from { stroke-dashoffset: 1500; } to { stroke-dashoffset: 0; } }
+    @keyframes logoFill { from { fill-opacity: 0; } to { fill-opacity: 1; } }
+    @keyframes overlayFade { from { opacity: 1; } to { opacity: 0; } }
+    @keyframes overlayShift { 0% { transform: translateY(0); opacity: 0.5; } 50% { transform: translateY(-4px); opacity: 0.55; } 100% { transform: translateY(0); opacity: 0.5; } }
+    @keyframes gradientWash { 0% { opacity: 0; } 50% { opacity: 0.4; } 100% { opacity: 0; } }
+    @keyframes floatUp { 0% { transform: translateY(20px) rotate(-6deg); opacity: 0; } 10% { opacity: 1; } 50% { transform: translateY(-40px) rotate(6deg); opacity: 0.7; } 100% { transform: translateY(-120px) rotate(12deg); opacity: 0; } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes scrollBounce { 0% { transform: translateY(0); opacity: 0.8; } 50% { transform: translateY(8%); opacity: 1; } 100% { transform: translateY(0); opacity: 0.8; } }
+    .animate-overlayShift { animation: overlayShift 8s ease-in-out infinite; }
+    .animate-gradientWash { animation: gradientWash 6s ease-in-out infinite; }
+    .animate-float-1 { animation: floatUp 11s ease-in-out infinite; }
+    .animate-float-2 { animation: floatUp 13s ease-in-out 1.5s infinite; }
+    .animate-float-3 { animation: floatUp 10s ease-in-out 800ms infinite; }
+    .animate-scrollBounce { animation: scrollBounce 1.4s ease-in-out infinite; }
+    #logo-blue, #logo-green { stroke-dasharray: 1500; stroke-dashoffset: 1500; }
+    #intro-overlay.intro-fade { animation: overlayFade 0.7s ease-out forwards; }
+    #logo-blue.logo-draw { animation: logoTraceDraw 2s ease-out forwards; }
+    #logo-green.logo-draw { animation: logoTraceDraw 2s ease-out 0.12s forwards; }
+    #logo-blue.logo-fill { animation: logoFill 0.45s ease-out 2s forwards; }
+    #logo-green.logo-fill { animation: logoFill 0.45s ease-out 2.08s forwards; }
+    .headline-part, .subtitle-part, .hero-sub, .eyebrow { opacity: 0; transform: translateY(18px); will-change: opacity, transform; }
+    .is-visible .headline-part, .is-visible .subtitle-part, .is-visible .hero-sub, .is-visible .eyebrow { animation: fadeUp 700ms cubic-bezier(0.2, 0.9, 0.3, 1) forwards; }
+    .is-visible .headline-part { animation-delay: var(--delay, 0ms); }
+    .is-visible .subtitle-part { animation-delay: calc(var(--delay, 0ms) + 120ms); }
+    .is-visible .hero-sub { animation-delay: calc(var(--delay, 0ms) + 240ms); }
+    .is-visible .eyebrow { animation-delay: calc(var(--delay, 0ms) - 100ms); }
+  </style>
+</head>
+<body>
+  <main class="min-h-screen">
+    <!-- Full-screen intro overlay with logo animation -->
+    <div id="intro-overlay" class="fixed inset-0 bg-gradient-to-br from-[#071A17] via-[#0B1F3A] to-[#071A17] z-50 flex items-center justify-center" style="opacity: 1;">
+      <div class="relative w-40 h-40 md:w-56 md:h-56">
+        <svg id="scell-logo-intro" viewBox="0 0 500 500" class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+          <polygon id="logo-blue" points="250,196.44 250,303.56 210.69,371.67 70.21,371.67 0,250 70.21,128.33 210.69,128.33 235.82,171.85 205.38,226.34 179.76,181.93 101.18,181.93 61.87,250 101.18,318.07 179.76,318.07 219.07,250" fill="#2563EB" fill-opacity="0" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <polygon id="logo-green" points="500,250 429.76,371.67 289.31,371.67 262.76,325.69 293.98,272.59 320.24,318.07 398.82,318.07 438.13,250 398.82,181.93 320.24,181.93 280.93,250 250,303.56 250,196.44 289.31,128.33 429.76,128.33" fill="#10B981" fill-opacity="0" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </div>
+
+    <section class="relative h-screen overflow-hidden" style="font-family: 'Manrope', sans-serif;">
+      <!-- Background with nature-inspired layered overlay -->
+      <div class="absolute inset-0">
+        <img src="./rain-water-green-leaf-macro.png" alt="Close-up green leaf with water droplets" class="w-full h-full object-cover" fetchpriority="high">
+        <!-- Deep animated overlay in dark blue/emerald tones -->
+        <div class="absolute inset-0 bg-gradient-to-b from-[#0B1F3A]/40 via-[#2F6F4E]/50 to-[#071A17]/70 mix-blend-multiply animate-overlayShift"></div>
+        <!-- Subtle animated wash layer -->
+        <div class="absolute inset-0 bg-gradient-to-r from-[#10B981]/15 via-transparent to-[#2563EB]/10 animate-gradientWash"></div>
+      </div>
+
+      <!-- Floating SVG leaves (decorative) -->
+      <div aria-hidden="true" class="pointer-events-none hidden md:block absolute inset-0">
+        <svg class="leaf absolute left-8 top-1/4 w-16 opacity-60 animate-float-1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 12c5-8 20-8 20-8s-6 13-11 20C6 26 2 12 2 12z" fill="#10B981" opacity="0.8"/>
+        </svg>
+        <svg class="leaf absolute right-12 top-2/3 w-20 opacity-50 animate-float-2" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M3 12c6-6 18-6 18-6s-5 10-11 16C7 28 3 12 3 12z" fill="#2F6F4E" opacity="0.7"/>
+        </svg>
+        <svg class="leaf absolute left-1/2 bottom-24 w-12 opacity-55 animate-float-3" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M1 12c7-7 15-7 15-7s-4 9-9 15C6 28 1 12 1 12z" fill="#84CC16" opacity="0.75"/>
+        </svg>
+      </div>
+
+      <!-- Hero content -->
+      <div class="relative h-full flex items-center">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-10 w-full">
+          <div class="max-w-3xl">
+            <p class="eyebrow text-sm md:text-base font-semibold tracking-widest text-[#84CC16] mb-4 opacity-90" style="--delay: 300ms; font-family: 'Sora', sans-serif;">IIT Bombay Initiative</p>
+            
+            <h1 class="hero-title text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight text-[#EAF2ED] mb-4" style="font-family: 'Sora', sans-serif;">
+              <span class="block headline-part" style="--delay: 0ms">Sustainability</span>
+              <span class="block text-[#10B981] subtitle-part font-bold" style="--delay: 120ms">Cell</span>
+            </h1>
+
+            <p class="hero-sub text-lg md:text-xl text-[#EAF2ED]/85 mb-8 max-w-2xl" style="--delay: 240ms; font-family: 'Manrope', sans-serif;">
+              Driving innovation in environmental stewardship, biodiversity research, and sustainable campus practices.
+            </p>
+
+            <div class="flex items-center gap-4 md:gap-6 flex-wrap">
+              <button id="hero-cta" class="cta relative overflow-hidden inline-flex items-center gap-3 px-8 py-3 rounded-lg border-2 border-[#10B981] text-[#10B981] font-semibold bg-transparent hover:bg-gradient-to-r hover:from-[#10B981] hover:to-[#2563EB] hover:text-[#071A17] focus:outline-none focus:ring-4 focus:ring-[#10B981]/40 transition-all duration-300 shadow-lg hover:shadow-[0_0_30px_rgba(16,185,129,0.35)]" aria-label="Learn more about Sustainability Cell" style="font-family: 'Sora', sans-serif;">
+                <span class="cta-content relative z-10 transition-transform duration-200">Explore</span>
+                <svg class="cta-arrow relative z-10 w-5 h-5 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                </svg>
+              </button>
+              <a href="#about" class="text-[#EAF2ED]/80 hover:text-[#84CC16] transition-colors duration-300 font-medium" style="font-family: 'Manrope', sans-serif;">Learn More →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll Indicator -->
+      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+        <button id="scroll-indicator" aria-label="Scroll to About" class="group flex items-center justify-center w-12 h-12 rounded-full bg-[#10B981]/20 border border-[#10B981]/40 hover:bg-[#10B981]/30 hover:border-[#10B981]/60 transition-all duration-300 focus:outline-none hover:shadow-[0_0_20px_rgba(16,185,129,0.3)]">
+          <svg class="w-6 h-6 text-[#84CC16] animate-scrollBounce group-hover:scale-110 transition-transform duration-200" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+          </svg>
+        </button>
+      </div>
+    </section>
+
+    <section id="about" class="py-20 bg-[#F8F9FA]">
+      <div class="max-w-4xl mx-auto px-6 text-center">
+        <h2 class="text-4xl font-bold text-[#1B4332] mb-4">About Us</h2>
+        <p class="text-lg text-gray-600">This anchor is included for local preview. The Explore button and scroll indicator have a visible target.</p>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function(){
+      const introOverlay = document.getElementById('intro-overlay');
+      const logoBluePath = document.getElementById('logo-blue');
+      const logoGreenPath = document.getElementById('logo-green');
+      const section = document.querySelector('section.relative.h-screen');
+      if (!section || !introOverlay) return;
+
+      const animTimings = {
+        blueDraw: 0,
+        greenDraw: 120,
+        blueFill: 2000,
+        greenFill: 2080,
+        overlayFade: 2580,
+        heroReveal: 3220
+      };
+
+      window.addEventListener('DOMContentLoaded', () => {
+        setTimeout(() => {
+          logoBluePath?.classList.add('logo-draw');
+          logoGreenPath?.classList.add('logo-draw');
+        }, animTimings.blueDraw);
+
+        setTimeout(() => {
+          logoBluePath?.classList.add('logo-fill');
+          logoGreenPath?.classList.add('logo-fill');
+        }, animTimings.blueFill);
+
+        setTimeout(() => {
+          introOverlay.classList.add('intro-fade');
+        }, animTimings.overlayFade);
+
+        setTimeout(() => {
+          section.classList.add('is-visible');
+        }, animTimings.heroReveal);
+      });
+
+      function smoothScrollTo(targetSelector) {
+        const el = document.querySelector(targetSelector);
+        if (!el) return;
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+
+      const cta = document.getElementById('hero-cta');
+      if (cta) {
+        let raf = null;
+        function onMove(e) {
+          const rect = cta.getBoundingClientRect();
+          const x = (e.clientX - rect.left) - rect.width / 2;
+          const y = (e.clientY - rect.top) - rect.height / 2;
+          const max = 10;
+          const tx = Math.max(Math.min(x / 10, max), -max);
+          const ty = Math.max(Math.min(y / 12, max), -max);
+          if (raf) cancelAnimationFrame(raf);
+          raf = requestAnimationFrame(() => {
+            cta.style.transform = `translate(${tx}px, ${ty}px)`;
+          });
+        }
+        function onLeave() {
+          if (raf) cancelAnimationFrame(raf);
+          cta.style.transform = '';
+        }
+        cta.addEventListener('mousemove', onMove);
+        cta.addEventListener('mouseleave', onLeave);
+        cta.addEventListener('click', (e) => { e.preventDefault(); smoothScrollTo('#about'); });
+      }
+
+      const scrollBtn = document.getElementById('scroll-indicator');
+      if (scrollBtn) {
+        scrollBtn.addEventListener('click', (e) => { e.preventDefault(); smoothScrollTo('#about'); });
+      }
+    })();
+  </script>
+</body>
+</html>
