@@ -8,4 +8,4 @@
 * Added Support for view on a Mobile device
 * Added a custom background leaf animation
 * Added IITB logo and link to IITB website
-* Other minor refinements
+* Other refinements
