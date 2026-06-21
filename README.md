@@ -5,7 +5,7 @@
 ## Improvements After 1st Round
 * Improved the Intro Animation
 * Added a Navigation bar
-* Added Support for view on a Mobile device
+* Added Support for viewing on a Mobile device
 * Added a custom background leaf animation
 * Added IITB logo and link to IITB website
 * Other refinements
